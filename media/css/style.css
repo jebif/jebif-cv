@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../img/layout/bg-body.png) repeat-x left top;
+    color: #636d89;
+    font-family: "Trebuchet MS";
+}
+
+h1 {
+    color: #4670bd;
+}
+
+h2 {
+    color: #4670bd;
+}
+
+a {color: #a6bae2;}
+a:hover{color: #ff910e;}
+
+#header h1 {
+    color: #fff;
+    padding-top: 22px;
+}
+
+#profile {
+    background: url(../img/layout/bg-top.png) no-repeat top left;
+    text-align: center;
+    height: 28px;
+    width: 240px;
+    padding-top: 3px;
+    float: right;
+    position: relative;
+}
+
+#content {
+    padding-top: 20px;
+}
+
+#content h1 {
+    font-size: 26px;
+}
+
+/* @start group menu */
+#menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#menu li {
+    font-size: 14px;
+    width: 100px;
+    float: left;
+    margin-left: 3px;
+}
+
+#menu a {
+    color: #fff;
+    text-align: center;
+    display: block;
+    margin: 0;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+#menu a:hover {
+    font-weight: bold;
+    padding-bottom: 8px;
+    color: #ff910e;
+}
+/* @end group menu */
+
+table.list {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+table.list thead {
+    background: url(../img/layout/bg-table-head.png) repeat-x left top;
+    border: 1px solid #a6bae2;
+}
+
+table.list thead th {
+    height: 35px;
+    background: none;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+table.list tbody tr {
+    height: 32px;
+    border-top: 1px solid #ebe9db;
+}
+
+table.list tbody tr td {
+    padding: 0px 5px 0px 5px;
+}
+
+table.list tbody tr:hover td {
+    background: #fff6a2;
+}
+
+.cleaner {
+    clear: both;
+}
+
+/* @start group messages */
+div.info_msg, div.success_msg, div.error_msg {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 5px;
+    padding-left: 38px;
+}
+
+div.info_msg {
+    background: #D9E8FA url(../img/icons/information.png) 10px center no-repeat;
+    border-color: #03588E;
+    color: #03588E;
+}
+
+div.success_msg {
+    background: #E9FAD9 url(../img/icons/accept.png) 10px center no-repeat;
+    border-color: #588E03;
+    color: #588E03;
+}
+
+div.error_msg {
+    background: #F2DCDC url(../img/icons/exclamation.png) 10px center no-repeat;
+    border-color: #C30000;
+    color: #C30000;
+}
+/* @end group messages */
+
+/* @start group form */
+form h3 {
+    color: #333;
+    border-bottom: 1px solid #333;
+    font-size: 14px;
+}
+
+form fieldset{
+    border: 0;
+}
+
+form .form-row{
+    margin-bottom: 5px;
+}
+
+form p.help{
+    color: #ccc;
+    font-style: italic;
+    font-size: 11px;
+}
+
+div.search_box {
+    background: #d2e3fd url('../img/layout/bg-search-box.png') left top repeat-x;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+div.search_box form .form-row {
+    float: left;
+    margin-right: 20px;
+    color: #aaa;
+}
+
+div.search_box form .form-row input, div.search_box form .form-row select {
+    width: 200px;
+}
+
+/* @end group form */
+
+/* @start group links */
+a.door_in {
+    background: url(../img/icons/door_in.png) no-repeat left center;
+}
+a.user {
+    background: url(../img/icons/user.png) no-repeat left center;
+}
+a.pdf{
+    background: url(../img/icons/page_white_acrobat.png) no-repeat left center;
+}
+.tags{
+    background: url(../img/icons/tag_blue.png) no-repeat left center;
+}
+
+a.door_in, a.user, a.pdf, .tags {
+    padding-left: 20px;
+}
+/* @end group links */
+
+#vCard {
+    float: left;
+    margin-bottom: 40px;
+    height: 180px;
+}
+
+#pdf_dl {
+    float: right;
+    text-align: center;
+}
+
+.cv_line {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.cv_line.last {
+    border-bottom: 1px solid #ddd;
+}
+
+.cv_picture {
+    float: left;
+    margin-right: 20px;
+    padding: 2px;
+    border: 1px solid #E8ECF0;
+}
+
+.cv_description {
+    float:left;
+}
+
+.cv_description a{
+    text-decoration: none;
+}

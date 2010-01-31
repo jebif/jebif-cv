@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content_header %}
+  <h2>Utilisateur "{{ user.username }}"</h2>
+{% endblock content_header %}
+
+{% block content %}
+{{ user.first_name }} {{ user.last_name }}
+<a href="{% url user_edit user.id %}">Editer</a>
+{% endblock content %}

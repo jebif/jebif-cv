@@ -1,0 +1,60 @@
+<p><em>Les champs marqués d'une étoile (*) sont obligatoires.</em></p>
+<h3>Présentation</h3>
+  <fieldset>
+    {% with form.first_name as field %}
+      {% include "form_fields.html" %}
+    {% endwith %}
+    
+    {% with form.last_name as field %}
+      {% include "form_fields.html" %}
+    {% endwith %}
+    
+    {% with form.description as field %}
+      {% include "form_fields.html" %}  
+    {% endwith %}
+    
+    {% with form.picture as field %}
+      {% include "form_fields.html" %}
+    {% endwith %}
+  </fieldset>
+<h3>Informations générales</h3>
+<fieldset>
+  {% with form.seeking_a_job as field %}
+    {% include "form_fields.html" %}
+  {% endwith %}
+  
+  {% with form.available_on as field %}
+    {% include "form_fields.html" %}
+  {% endwith %}
+  
+  {% with form.job_type as field %}
+    {% include "form_fields.html" %}
+  {% endwith %}
+  
+  {% with form.keywords as field %}
+    {% include "form_fields.html" %}
+  {% endwith %}
+  
+  {% with form.paper_version as field %}
+    {% include "form_fields.html" %}
+  {% endwith %}
+</fieldset>
+
+<h3>Lettre de motivation</h3>
+<fieldset>
+  {{ form.cover_letter }}
+  <p class="help">{{ form.cover_letter.help_text }}</p>
+</fieldset>
+
+<h3>Téléchargez un fichier PDF</h3>
+<fieldset>
+  {{ form.pdf.errors }}
+  {{ form.pdf }}
+</fieldset>
+
+<h3>Validation</h3>
+<fieldset>
+  <em>Votre CV va être envoyé aux modérateurs pour validation. Une fois validé, il sera publié sur le site.</em>
+  <br />
+  <input type="submit" value="Soumettre" />
+</fieldset>

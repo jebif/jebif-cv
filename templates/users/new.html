@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content_header %}<h2>Ajout d'un utilisateur</h2>{% endblock content_header %}
+
+{% block content %}
+  <form action="{% url user_collection %}" method="POST">
+    {% for field in form %}
+      {% include "form_fields.html" %}
+    {% endfor %}
+    <input type="submit" value="Ajouter" />
+  </form>
+{% endblock content %}

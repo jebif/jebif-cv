@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content_header %}
+  <h2>Candidats - Nouveau CV</h2>
+{% endblock content_header %}
+
+{% block content %} 
+  <form action="{% url cv_collection %}" enctype="multipart/form-data" method="POST">
+    {% include "cv/_form.html" %}
+  </form>
+{% endblock content %}

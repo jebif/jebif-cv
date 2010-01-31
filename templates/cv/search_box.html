@@ -1,0 +1,25 @@
+<div class="search_box">
+  <form>
+    {% with form.job_type as field %}
+      {% include "form_fields.html" %}
+    {% endwith %}
+    
+    {% with form.keyword as field %}
+      {% include "form_fields.html" %}
+    {% endwith %}
+    
+    {% with form.available_on as field %}
+      {% include "form_fields.html" %}
+    {% endwith %}
+    
+    {% with form.name as field %}
+      {% include "form_fields.html" %}
+    {% endwith %}
+    
+    <div class="cleaner"></div>
+    
+    <input type="submit" name="search" value="Rechercher" />
+  </form>
+</div>
+
+<div class="cleaner"></div>

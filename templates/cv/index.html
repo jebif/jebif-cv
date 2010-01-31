@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+{{ block.super }}
+<!-- Date range picker widget -->
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/jquery-ui/ui.daterangepicker.css" />
+<script type="text/javascript" src="{{ MEDIA_URL }}js/lib/ui.datepicker-fr.js"> </script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/lib/ui.daterangepicker-fr.js"> </script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/lib/daterangepicker.jQuery.js"> </script>
+
+<!-- Search form JS helpers -->
+<script type="text/javascript" src="{{ MEDIA_URL }}js/search_form.js"> </script>
+{% endblock %}
+
+{% block content %}
+
+  <h2>Rechercher</h2>
+  {% include "cv/search_box.html" %}
+  
+  <h2>Candidats</h2>
+  {% for cv in cv_list %}
+    <div class="cv_line {% if forloop.last %}last{% endif %}">
+      <div class="cv_picture">
+        {% if cv.picture %}
+          <img src="{{ cv.picture.url }}" width="50px" height="70px" />
+        {% else %}
+          <img src="{{ MEDIA_URL }}img/layout/silhouette.png" width="50px" height="70px" />
+        {% endif %}
+      </div>
+      <div class="cv_description">
+        <h3><a href="{{ cv.get_absolute_url }}">{{ cv.first_name }} {{ cv.last_name }}</a></h3>
+        {{ cv.description }}
+        <p class="tags">Mots-clés: {{ cv.keywords|default:"-" }}</p>
+      </div>
+      <div class="cleaner"></div>
+    </div>
+  {% empty %}
+    <em>Aucun CV trouvé.</em>
+  {% endfor %}
+
+{% endblock content %}

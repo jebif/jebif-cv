@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content_header %}
+  <h2>Candidats - {{ cv.first_name }} {{ cv.last_name }}</h2>
+{% endblock content_header %}
+
+{% block content %}
+  <form action="{{ cv.get_absolute_url }}" enctype="multipart/form-data" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    {% include "cv/_form.html" %}
+  </form>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content_header %}
+  <h2>Modification de l'utilisateur "{{ user_edit.username }}"</h2>
+{% endblock content_header %}
+
+{% block content %}
+  <form action="{% url user_entry user_edit.id %}" method="POST">
+    <input type="hidden" name="_method" value="PUT" />
+    
+    {% for field in form %}
+      {% include "form_fields.html" %}
+    {% endfor %}
+    
+    <input type="submit" value="Modifier" />
+  </form>
+{% endblock content %}

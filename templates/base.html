@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, buttons" />
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection" />
+    <![endif]-->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css" />
+    
+    <!-- Jquery and JQuery UI -->
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/jquery-ui/redmond/style.css" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/common.js"></script>
+    
+    <!-- Autocomplete widget -->
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/jquery/autocomplete/style.css" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/jquery.autocomplete.js"> </script>
+    
+    {% block extra_head %}{% endblock extra_head %}
+  </head>
+  
+  <body>
+    <div class="container">
+      <div id="header">
+        <div id="profile">
+          <a href="{% url user_edit user.id %}" class="user">{{ user.username }}</a>
+          | <a href="{% url logout %}" class="door_in">Déconnexion</a>
+        </div>
+        
+        <h1>JeBIF - Banque de CV</h1>
+        
+        <ul id="menu">
+          {% if user.get_profile.is_candidate %}
+            {% if user.get_profile.cv %}
+              <li>
+                <a href="{{ user.get_profile.cv.get_absolute_url }}">
+                  Mon CV
+                </a>
+              </li>
+            {% else %}
+              <li><a href="{% url cv_new %}">Mon CV</a></li>
+            {% endif %}
+          {% endif %}
+          
+          <li><a href="{% url cv_collection %}">Candidats</a></li>
+          
+          {% if user.get_profile.is_employeer %}
+            <li><a href="#">Rechercher</a></li>
+          {% endif %}
+          
+          {# <li><a href="#">Localisation</a></li> #}
+          
+          {% if user.is_superuser %}
+            <li><a href="{% url user_collection %}">Utilisateurs</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="cleaner"></div>
+      
+      <div id="content" class="span-24">
+        {% block content_header %}{% endblock content_header %}
+        
+        {% for message in messages %}
+            {{ message|safe|linebreaks }}
+        {% endfor %}
+        
+        {% block content %}{% endblock content %}
+      </div>
+    </div>
+  </body>
+</html>

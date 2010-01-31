@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content_header %}
+{% endblock content_header %}
+
+{% block content %}
+  {% if user.get_profile.is_employeer and cv.pdf %}
+    <div id="pdf_dl">
+      <a href="{{ cv.pdf.url }}">
+        <img src="{{ MEDIA_URL }}img/icons/pdf_big.gif" width="100px" height="100px" /><br />
+        Télécharger CV
+      </a>
+    </div>
+  {% endif %}
+
+  <div id="vCard">
+    <div class="cv_picture">
+      {% if cv.picture %}
+        <img src="{{ cv.picture.url }}" width="120px" height="155px" />
+      {% else %}
+        <img src="{{ MEDIA_URL }}img/layout/silhouette.png" width="140px" height="185px" />
+      {% endif %}
+    </div>
+    
+    <div class="cv_description">
+      <h2>{{ cv.first_name }} {{ cv.last_name }}</h2>
+      
+      <p>
+        Mots-clés: {{ cv.keywords|default:"-" }}<br />
+        Recherche de poste: {{ cv.get_seeking_a_job_display }}<br />
+        Types de poste: {{ cv.job_type.all|join:", " }}<br />
+        Je suis disponible à partir du: {{ cv.available_on|date }}
+      </p>
+      {% ifequal cv.id user.get_profile.cv.id %}
+          <a href="{% url cv_edit cv.id %}">Editer profil</a>
+      {% endifequal %}
+    </div>
+  </div>
+  
+  <div class="cleaner"></div>
+
+  {% if cv.cover_letter %}
+    <h3>Lettre de motivation</h3>
+    <p>{{ cv.cover_letter|striptags|linebreaks }}</p>
+  {% endif %}
+{% endblock content %}

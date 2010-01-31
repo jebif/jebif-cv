@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #fff url('../img/layout/bg-home.png') repeat-x;
+    font: 12px/1.5 Arial, Helvetica, sans-serif;
+    text-align: center; /* IE6 hack */
+    margin-top: 200px;
+    color: #fff;
+}
+#wrapper {
+    margin: 0 auto;
+    width: 500px;
+    display: block;
+    text-align: left;
+}
+
+#login {
+    width: 500px;
+    border: 1px solid #ccc;
+    background: #edf0f9;
+}
+
+#header {
+    background: #c5dbf7 /*url('../img/layout/login/header.png')*/;
+    height: 30px;
+    text-indent: 20px;
+    line-height: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #c5dbf7;
+}
+
+#content {
+    padding-top: 10%;
+    padding-left: 80px;
+    height: 150px;
+}
+
+#footer {
+    background: #c5dbf7;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    text-align: right;
+    font-size: 10px;
+    border-top: 1px solid #c5dbf7;
+}
+
+form {
+/*    padding-left: 10%;*/
+/*    padding: 10px 0px 10px 0px;*/
+}
+
+label {
+    color: #666;
+    float: left;
+    font-size: 14px;
+    width: 120px;
+    height:  25px;
+    display: block;
+    line-height: 25px;
+}
+input {
+    border: 1px solid #ccc;
+    background: #ffffff;
+    padding: 5px;
+    float: left;
+}
+input.submit {
+    width: auto;
+    height: auto;
+    border: none;
+    background: none;
+    float: none;
+    padding: 0px;
+    margin: 0px 0px 0px 119px;
+}
+.msg_error {
+    background: #ffe7dc url('../img/layout/msg-error.gif') no-repeat;
+    border: 1px solid #fa7050;
+    color: #e2350d;
+    background-position: 5px 1px;
+    min-height: 28px;
+    padding: 9px 0px 0px 50px;
+    margin: 10px 0px 10px 0px;
+}
+.cleaner {
+    clear:both;
+    height:1px;
+    font-size:1px;
+    border:none;
+    margin:0;
+    padding:0;
+    background:transparent;
+}
