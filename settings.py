@@ -6,24 +6,27 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Sebastien Briois', 'sebriois@gmail.com')
+    ('Sebastien Briois', 'sebriois@gmail.com'),
+    ('Pauleve Loic', 'pauleve@inzenet.org')
 )
 
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'database.sqlite3'             # Or path to database file if using sqlite3.
+DATABASE_NAME = os.path.join(PROJECT_PATH,'database.sqlite3')             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+
+from jebif_cv.localsettings import *
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'France/Paris'
+TIME_ZONE = 'Europe/Paris'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -42,12 +45,12 @@ MEDIA_ROOT = PROJECT_PATH + '/media'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = '/' + ROOT_URL + 'media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/admin_media/'
+ADMIN_MEDIA_PREFIX = '/' + ROOT_URL + 'admin_media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '@3axuqns1g^4&ptft9lvsw=780g!xx%y617phw@nq#7^c3e^8i'
@@ -69,7 +72,6 @@ MIDDLEWARE_CLASSES = (
     'middleware.TerminalLogging'
 )
 
-ROOT_URL = ''
 ROOT_URLCONF = 'jebif_cv.urls'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
