@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     (r'^users/',        include('users.urls')),
     (r'^admin/',        include(admin.site.urls)),
     (r'^accounts/',     include('registration.urls')),
-    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    (r'^admin_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.ADMIN_MEDIA_ROOT})
 )
 
 urlpatterns += patterns('django.views.generic.simple',

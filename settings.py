@@ -19,6 +19,8 @@ DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
+ADMIN_TEMPLATE_DIR = "/var/lib/django/contrib/admin/templates"
+ADMIN_MEDIA_ROOT = ""
 from jebif_cv.localsettings import *
 
 # Local time zone for this installation. Choices can be found here:
@@ -86,6 +88,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     PROJECT_PATH + "/templates",
+    ADMIN_TEMPLATE_DIR
 )
 
 INSTALLED_APPS = (
