@@ -20,7 +20,6 @@
         {% with user.get_profile.cv as cv %}
           <td>
             {% if cv %}
-              <a href="{{ cv.get_absolute_url }}" class="vcard">Voir profil</a>
               {% if cv.pdf %}
                 <a href="{{ cv.pdf.url }}" class="pdf">Voir pdf</a>
                 {% if cv.is_valid %}
