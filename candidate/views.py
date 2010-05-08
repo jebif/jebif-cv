@@ -1,5 +1,6 @@
 # -*- encoding: utf8 -*-
 
+from django.db.models import Q
 from django.views.generic.simple import direct_to_template
 from django.shortcuts import get_object_or_404, redirect
 
@@ -50,6 +51,60 @@ def toggle_valid(request, cv_id):
     cv.save()
     return redirect( 'user_collection' )
 
+def search(request):
+    form = SearchForm( data = request.POST )
+    
+    filters = {}
+    
+    if form.is_valid():
+        data         = form.cleaned_data
+        job_type     = data['job_type']
+        keywords     = data['keywords']
+        available_on = data['available_on']
+        name         = data['name']
+        
+        # Job type - multiple choices
+        if job_type:
+            filters.update({ 'job_type__in': job_type })
+        
+        # Available from / Available before
+        if available_on and instance(available_on, list) and len(available_on) == 2:
+            filters.update({
+                'available_on__gte': available_on[0],
+                'available_on__lte': available_on[1]
+            })
+        
+        # Keywords
+        if keywords:
+            ids = []
+            for kw in keywords:
+                ids.extend(CV.objects.filter(keywords__icontains = kw).values_list('id', flat = True))
+            filters.update({ 'id__in': ids })
+        
+        if filters:
+            cv_list = CV.objects.filter(**filters)
+        else:
+            cv_list = CV.objects.none()
+        
+        # First name and Last name
+        if name:
+            if not cv_list and not filters: cv_list = CV.objects.all()
+            
+            name = name.split(' ')
+            if len(name) == 1:
+                cv_list = cv_list.filter( Q(first_name = name[0]) | Q(last_name = name[0]) )
+            else:
+                cv_list = cv_list.filter( 
+                    Q(first_name = name[0]) | Q(last_name = name[1]) |
+                    Q(first_name = name[1]) | Q(last_name = name[0])
+                )
+        
+    
+    return direct_to_template(request, "cv/index.html", {
+        'form': form,
+        'cv_list': cv_list
+    })
+
 
 #
 # Private views
@@ -83,8 +138,12 @@ def _create(request):
             'form': form
         })
     
+
 def _update(request, cv):
-    form = CVForm(instance = cv, data = request.PUT, files = request.FILES)
+    data = request.PUT.copy()
+    data['is_valid'] = cv.is_valid
+    
+    form = CVForm(instance = cv, data = data, files = request.FILES)
     if form.is_valid():
         form.save()
         message = SUCCESS_MSG%"CV modifié avec succès"
@@ -97,7 +156,7 @@ def _update(request, cv):
             'cv': cv,
             'form': form
         })
-    
+
 def _delete(request, cv_id):
     cv.delete()
     return redirect('cv_collection')

@@ -32,10 +32,10 @@
     */
     line-height: 16px;
     overflow: hidden;
-    color: #F65C1F;
+    color: #43a6f6;
 }
 .ac_results strong {
-    color: #F65C1F;
+    color: #43a6f6;
 }
 
 .ac_loading {
@@ -48,6 +48,10 @@
     border-bottom: 1px solid #E0DCC9;
 }
 
-.ac_over {
-    background-color: #e9f6be;
+li.ac_over {
+    background-color: #4670bd;
+    color: white;
+}
+li.ac_over strong {
+    color: white;
 }

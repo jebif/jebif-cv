@@ -1,10 +1,10 @@
 <div class="search_box">
-  <form>
+  <form action="{% url cv_search %}" method="POST">
     {% with form.job_type as field %}
       {% include "form_fields.html" %}
     {% endwith %}
     
-    {% with form.keyword as field %}
+    {% with form.keywords as field %}
       {% include "form_fields.html" %}
     {% endwith %}
     

@@ -28,7 +28,7 @@ class SearchForm(forms.Form):
                         required = False
                       )
     
-    keyword         = forms.CharField(
+    keywords        = forms.CharField(
                         label = u"Mot-clés",
                         required = False
                       )
@@ -50,8 +50,30 @@ class SearchForm(forms.Form):
         
         keywords = CV.objects.all().values_list('keywords')
         if keywords:
-            keywords = ",".join(zip(*keywords.distinct())[0]).replace(", ", ",").replace(" ,", ",")
+            keyword_choices = []
+            for keyword in ",".join(zip(*keywords.distinct())[0]).split(","):
+                keyword = keyword.strip().lower()
+                if not keyword in keyword_choices:
+                    keyword_choices.append( keyword )
+            keywords = ",".join( keyword_choices )
         else:
             keywords = ""
-        self.fields['keyword'].widget.attrs.update({ 'choices' : keywords })
+        self.fields['keywords'].widget.attrs.update({ 'choices' : keywords })
+        
+        names = CV.objects.all().values_list('last_name', 'first_name')
+        names = ",".join(map(" ".join, names))
+        self.fields['name'].widget.attrs.update({ 'choices' : names })
     
+    def clean_available_on(self):
+        data = self.cleaned_data
+        if not data['available_on']: return data['available_on']
+        
+        available_on = data['available_on'].split(' ')
+        return available_on
+    
+    def clean_keywords(self):
+        data = self.cleaned_data
+        if not data['keywords']: return data['keywords']
+        
+        return data['keywords'].split(',')
+

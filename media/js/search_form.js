@@ -9,7 +9,11 @@ $(document).ready(function(){
         }
     });
 
-    // Set ``autocomplete`` widget for metadata fields
-    var name_choices = $('[name="keyword"]').attr('choices').split(';');
-    $('[name="keyword"]').autocomplete(name_choices);
+    // Set ``autocomplete`` widget for keyword field
+    var kw_choices = $('[name="keywords"]').attr('choices').split(',');
+    $('[name="keywords"]').autocomplete( kw_choices );
+    
+    // Set ``autocomplete`` widget for name field
+    var name_choices = $('[name="name"]').attr('choices').split(',');
+    $('[name="name"]').autocomplete( name_choices );
 });

@@ -8,7 +8,6 @@
     <th>Identifiant</th>
     <th>Nom réel</th>
     <th>E-mail</th>
-    <th>CV</th>
     <th class="last">Actions</th>
   </thead>
   <tbody>
@@ -17,24 +16,25 @@
         <td>{{ user.username }}</td>
         <td>{{ user.get_full_name|default:"-" }}</td>
         <td>{{ user.email|default:"-" }}</td>
-        <td>
-          {% if user.get_profile.cv %}
-            <a href="{{ user.get_profile.cv.get_absolute_url }}">Voir fiche</a>
-            {% if user.get_profile.cv.pdf %}
-              - <a href="{{ user.get_profile.cv.pdf.url }}">Voir pdf</a>
+        
+        {% with user.get_profile.cv as cv %}
+          <td>
+            {% if cv %}
+              <a href="{{ cv.get_absolute_url }}" class="vcard">Voir profil</a>
+              {% if cv.pdf %}
+                <a href="{{ cv.pdf.url }}" class="pdf">Voir pdf</a>
+                {% if cv.is_valid %}
+                  <a href="{% url cv_toggle_valid cv.id %}" class="exclamation">Invalider CV</a>
+                {% else %}
+                  <a href="{% url cv_toggle_valid cv.id %}" class="accept">Valider CV</a>
+                {% endif %}
+              {% endif %}
             {% endif %}
-          {% else %}-
-          {% endif %}
-        </td>
-        <td>
-          {% if user.get_profile.cv %}
-            <a href="{% url cv_toggle_valid user.get_profile.cv.id %}">
-              {% if user.get_profile.cv.is_valid %}Invalider CV{% else %}Valider CV{% endif %}</a> |
-          {% endif %}
-          <a href="{% url user_edit user.id %}">éditer</a> |
-          <a href="{% url change_password user.id %}">modifier mot de passe</a> |
-          <a href="{% url user_delete user.id %}" class="confirm">supprimer</a>
-        </td>
+            <a href="{% url user_edit user.id %}" class="edit">Editer</a>
+            <a href="{% url change_password user.id %}" class="key">Modifier mot de passe</a>
+            <a href="{% url user_delete user.id %}" class="cross confirm">Supprimer</a>
+          </td>
+        {% endwith %}
       </tr>
     {% endfor %}
   </tbody>

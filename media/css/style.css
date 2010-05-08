@@ -156,6 +156,11 @@ form p.help{
     font-size: 11px;
 }
 
+form input[type=password] {
+    width: 300px;
+    padding: 5px;
+}
+
 div.search_box {
     background: #d2e3fd url('../img/layout/bg-search-box.png') left top repeat-x;
     border-top: 1px solid #ccc;
@@ -186,12 +191,34 @@ a.user {
 a.pdf{
     background: url(../img/icons/page_white_acrobat.png) no-repeat left center;
 }
+a.edit{
+    background: url(../img/icons/pencil.png) no-repeat left center;
+}
+a.cross{
+    background: url(../img/icons/cross.png) no-repeat left center;
+}
+a.key{
+    background: url(../img/icons/key.png) no-repeat left center;
+}
+a.accept{
+    background: url(../img/icons/accept.png) no-repeat left center;
+}
+a.exclamation{
+    background: url(../img/icons/exclamation.png) no-repeat left center;
+}
+a.vcard {
+    background: url(../img/icons/vcard.png) no-repeat left center;
+}
 .tags{
     background: url(../img/icons/tag_blue.png) no-repeat left center;
 }
 
-a.door_in, a.user, a.pdf, .tags {
+a.door_in, a.user, a.pdf, a.edit, a.cross, a.key, a.accept, a.exclamation, 
+a.vcard, .tags {
     padding-left: 20px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-right: 7px;
 }
 /* @end group links */
 
@@ -213,6 +240,7 @@ a.door_in, a.user, a.pdf, .tags {
 
 .cv_line.last {
     border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
 }
 
 .cv_picture {
@@ -224,6 +252,7 @@ a.door_in, a.user, a.pdf, .tags {
 
 .cv_description {
     float:left;
+    width: 925px;
 }
 
 .cv_description a{
