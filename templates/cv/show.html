@@ -7,7 +7,7 @@
   {% if user.get_profile.is_employeer and cv.pdf %}
     <div id="pdf_dl">
       <a href="{{ cv.pdf.url }}">
-        <img src="{{ MEDIA_URL }}img/icons/pdf_big.gif" width="100px" height="100px" /><br />
+        <img src="{{ MEDIA_URL }}cv/img/icons/pdf_big.gif" width="100px" height="100px" /><br />
         Télécharger CV
       </a>
     </div>
@@ -18,7 +18,7 @@
       {% if cv.picture %}
         <img src="{{ cv.picture.url }}" width="120px" height="155px" />
       {% else %}
-        <img src="{{ MEDIA_URL }}img/layout/silhouette.png" width="140px" height="185px" />
+        <img src="{{ MEDIA_URL }}cv/img/layout/silhouette.png" width="140px" height="185px" />
       {% endif %}
     </div>
     

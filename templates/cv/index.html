@@ -3,13 +3,13 @@
 {% block extra_head %}
 {{ block.super }}
 <!-- Date range picker widget -->
-<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/jquery-ui/ui.daterangepicker.css" />
-<script type="text/javascript" src="{{ MEDIA_URL }}js/lib/ui.datepicker-fr.js"> </script>
-<script type="text/javascript" src="{{ MEDIA_URL }}js/lib/ui.daterangepicker-fr.js"> </script>
-<script type="text/javascript" src="{{ MEDIA_URL }}js/lib/daterangepicker.jQuery.js"> </script>
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}cv/css/jquery-ui/ui.daterangepicker.css" />
+<script type="text/javascript" src="{{ MEDIA_URL }}cv/js/lib/ui.datepicker-fr.js"> </script>
+<script type="text/javascript" src="{{ MEDIA_URL }}cv/js/lib/ui.daterangepicker-fr.js"> </script>
+<script type="text/javascript" src="{{ MEDIA_URL }}cv/js/lib/daterangepicker.jQuery.js"> </script>
 
 <!-- Search form JS helpers -->
-<script type="text/javascript" src="{{ MEDIA_URL }}js/search_form.js"> </script>
+<script type="text/javascript" src="{{ MEDIA_URL }}cv/js/search_form.js"> </script>
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@
         {% if cv.picture %}
           <img src="{{ cv.picture.url }}" width="50px" height="70px" />
         {% else %}
-          <img src="{{ MEDIA_URL }}img/layout/silhouette.png" width="50px" height="70px" />
+          <img src="{{ MEDIA_URL }}cv/img/layout/silhouette.png" width="50px" height="70px" />
         {% endif %}
       </div>
       <div class="cv_description">
