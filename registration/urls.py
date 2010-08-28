@@ -13,7 +13,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from registration.views import send_password
 
-ROOT_URL = settings.ROOT_URL
+ROOT_URL = "%scv/" % settings.ROOT_URL
 
 urlpatterns = patterns('',
     # Activation keys get matched by \w+ instead of the more specific
